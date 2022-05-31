@@ -1,0 +1,134 @@
+/* ################## GENERADOR DE MARGINS ################## */
+
+@each $m in $list-g {
+  .mt-#{nth($m,1)} {
+    margin-top: #{nth($m,2)};
+  }
+  .mb-#{nth($m,1)} {
+    margin-bottom: #{nth($m,2)};
+  }
+  .ml-#{nth($m,1)} {
+    margin-left: #{nth($m,2)};
+  }
+  .mr-#{nth($m,1)} {
+    margin-right: #{nth($m,2)};
+  }
+  .mx-#{nth($m,1)} {
+    margin-left: #{nth($m,2)};
+    margin-right: #{nth($m,2)};
+  }
+  .my-#{nth($m,1)} {
+    margin-top: #{nth($m,2)};
+    margin-bottom: #{nth($m,2)};
+  }
+  @each $bp in $list-bp {
+    @media (min-width: #{nth($bp,2)}) {
+      .mt-#{nth($bp,1)}-#{nth($m,1)} {
+        margin-top: #{nth($m,2)} !important;
+      }
+      .mb-#{nth($bp,1)}-#{nth($m,1)} {
+        margin-bottom: #{nth($m,2)} !important;
+      }
+      .ml-#{nth($bp,1)}-#{nth($m,1)} {
+        margin-left: #{nth($m,2)} !important;
+      }
+      .mr-#{nth($bp,1)}-#{nth($m,1)} {
+        margin-right: #{nth($m,2)} !important;
+      }
+      .mx-#{nth($bp,1)}-#{nth($m,1)} {
+        margin-left: #{nth($m,2)} !important;
+        margin-right: #{nth($m,2)} !important;
+      }
+      .my-#{nth($bp,1)}-#{nth($m,1)} {
+        margin-top: #{nth($m,2)} !important;
+        margin-bottom: #{nth($m,2)} !important;
+      }
+    }
+  }
+}
+
+
+/* ################## GENERADOR DE PADDINGS ################## */
+
+@each $p in $list-g {
+  .pt-#{nth($p,1)} {
+  padding-top: #{nth($p,2)};
+  }
+  .pb-#{nth($p,1)} {
+  padding-bottom: #{nth($p,2)};
+  }
+  .pl-#{nth($p,1)} {
+  padding-left: #{nth($p,2)};
+  }
+  .pr-#{nth($p,1)} {
+  padding-right: #{nth($p,2)};
+  }
+  .px-#{nth($p,1)} {
+  padding-left: #{nth($p,2)};
+  padding-right: #{nth($p,2)};
+  }
+  .py-#{nth($p,1)} {
+  padding-top: #{nth($p,2)};
+  padding-bottom: #{nth($p,2)};
+  }
+  @each $bp in $list-bp {
+      @media (min-width: #{nth($bp,2)}) {
+          .pt-#{nth($bp,1)}-#{nth($p,1)} {
+          padding-top: #{nth($p,2)} !important;
+          }
+          .pb-#{nth($bp,1)}-#{nth($p,1)} {
+          padding-bottom: #{nth($p,2)} !important;
+          }
+          .pl-#{nth($bp,1)}-#{nth($p,1)} {
+          padding-left: #{nth($p,2)} !important;
+          }
+          .pr-#{nth($bp,1)}-#{nth($p,1)} {
+          padding-right: #{nth($p,2)} !important;
+          }
+          .px-#{nth($bp,1)}-#{nth($p,1)} {
+          padding-left: #{nth($p,2)} !important;
+          padding-right: #{nth($p,2)} !important;
+          }
+          .py-#{nth($bp,1)}-#{nth($p,1)} {
+          padding-top: #{nth($p,2)} !important;
+          padding-bottom: #{nth($p,2)} !important;
+          }
+      }
+  }
+}
+
+
+
+/* You can add global styles to this file, and also import other style files */
+
+/*$skins: () !default;
+$skins: map-merge((
+"test": (
+  "skin-primary-color": $color-1,
+  "skin-navbar": #fff,
+  "skin-footer-color": #fff,
+  "skin-accent": $color-2,
+  "skin-flat": #fff,
+  "skin-sidenav-item": rgba(255, 255, 255, 0.4),
+  "skin-sidenav-item-hover": rgba(255, 255, 255, 0.3),
+  "skin-gradient-start": #fff,
+  "skin-gradient-end": #fff,
+  "skin-mask-slight": #fff,
+  "skin-mask-light": rgba(201, 121, 196, 0.5),
+  "skin-mask-strong": #fff,
+  "skin-sn-child": #fff,
+  "skin-btn-primary": $color-1,
+  "skin-btn-secondary": #fff,
+  "skin-btn-default": #fff,
+  "skin-text": #fff
+)
+), $skins);*/
+
+
+// FIX TEMPORAL PARA QUE NO DE ERROR CON EL PESO
+//@import '~ng-uikit-pro-standard/assets/scss/core/mixins';
+//@import '~ng-uikit-pro-standard/assets/scss/core/colors';
+//@import '~ng-uikit-pro-standard/assets/scss/core/variables';
+//@import '~ng-uikit-pro-standard/assets/scss/core/variables-pro';
+//@import '~ng-uikit-pro-standard/assets/scss/core/msc/skins-pro';
+

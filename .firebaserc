@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fran-terenti": {
+      "hosting": {
+        "kanban-app": [
+          "kanban-app-fran"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fran-terenti"
+  }
+}

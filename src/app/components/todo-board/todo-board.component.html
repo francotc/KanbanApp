@@ -1,0 +1,16 @@
+<div class="db-container-2 mt-5">
+  <div cdkDropList cdkDropListOrientation="horizontal" class="boards" (cdkDropListDropped)="drop($event)">
+    <ng-container cdkDrag *ngFor="let board of todoListService.boards; index as i">
+      <app-todo-list [indexBoard]="i" [board]="board">
+      </app-todo-list>
+      <mat-icon cdkDragHandle class="handle">drag_indicator</mat-icon>
+    </ng-container>
+
+
+    <div class="board-button">
+      <button mat-raised-button color="accent" cdkDragDisabled (click)="openAdd()">
+        Nueva columna
+      </button>
+    </div>
+  </div>
+</div>

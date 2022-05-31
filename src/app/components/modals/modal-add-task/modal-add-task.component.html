@@ -1,0 +1,13 @@
+<div class="modal-footer justify-content-center">
+  <mdb-form-control>
+    <input mdbInput type="text" [value]="content" id="form1" #form1 class="form-control" />
+    <label mdbLabel class="form-label" for="form1">Contenido</label>
+  </mdb-form-control>
+  <span>
+    <button (click)="save(form1.value)" type="button" class="btn btn-primary mr-2"><i
+        class="fa fa-save me-2"></i>Guardar</button>
+    <button (click)="modalRef.close()" type="button" class="btn btn-outline-danger">
+      Cancelar
+    </button>
+  </span>
+</div>
