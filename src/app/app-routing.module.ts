@@ -3,7 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { TodoBoardComponent } from './components/todo-board/todo-board.component';
 
 const routes: Routes = [
-  { path: '', component: TodoBoardComponent }
+  {
+    path: '', component: TodoBoardComponent,
+  },
+  {
+    path: 'kanban/:id', component: TodoBoardComponent,
+  }
   /*   {
       path: 'login',
       loadChildren: () => import('./user/user.module').then(m => m.UserModule)

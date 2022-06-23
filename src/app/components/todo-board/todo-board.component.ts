@@ -3,6 +3,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TodoListService } from 'src/app/services/todo-list.service';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalAddTaskComponent } from '../modals/modal-add-task/modal-add-task.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-todo-board',
@@ -15,9 +16,13 @@ export class TodoBoardComponent implements OnInit {
   constructor(
     public todoListService: TodoListService,
     private modalService: MdbModalService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(routeParams => {
+      this.todoListService.currentList = routeParams.id ?? 'default';
+    });
   }
 
   drop(event: CdkDragDrop<string[]>) {

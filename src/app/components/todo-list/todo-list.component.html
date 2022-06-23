@@ -1,4 +1,4 @@
-<div class="container outer-card">
+<div cdkDropListGroup class="container outer-card">
   <div class="row justify-content-center">
     <div class="col item">
       <div class="card px-2">
@@ -6,9 +6,13 @@
           <h4 class="card-title mb-4">{{board.texto}}
           </h4>
 
-          <div class="lista-tareas mb-4">
-            <app-todo-item *ngFor="let tarea of board.tareas; index as i; last as l" [tarea]="tarea" [last]="l"
-              (modifyTarea)="modifyTarea($event, i)"></app-todo-item>
+          <div class="lista-tareas mb-4" cdkDropList [cdkDropListData]="board.tareas"
+            (cdkDropListDropped)="drop($event)">
+            <div cdkDrag *ngFor="let tarea of board.tareas; index as i; last as l">
+              <i cdkDragHandle class="fa fa-grip-vertical mr-2"></i>
+              <app-todo-item [tarea]="tarea" [last]="l" (modifyTarea)="modifyTarea($event, i)">
+              </app-todo-item>
+            </div>
           </div>
 
           <p class="text-center">

@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { TodoListService } from 'src/app/services/todo-list.service';
@@ -61,6 +62,15 @@ export class TodoListComponent implements OnInit {
     this.modalRef.onClose.subscribe((texto: any) => {
       this.todoListService.editTask(index, texto, this.indexBoard);
     });
+  }
+
+  drop(event: CdkDragDrop<any[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+    }
+    event.container.data.map((element, index) => element.orden = index);
   }
 
   get tareas() {

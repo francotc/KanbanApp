@@ -6,8 +6,9 @@ import { Stats, Tarea } from '../models/tareas.model';
   providedIn: 'root'
 })
 export class TodoListService {
-  boards: any[] = []
+  boards: any = {};
   tareas: Tarea[] = [];
+  currentList: string;
 
   private taskStats = new BehaviorSubject<Stats>({ pending: 0, completed: 0 });
   taskStats$ = this.taskStats.asObservable();
@@ -30,9 +31,9 @@ export class TodoListService {
     localStorage.setItem('boards', JSON.stringify(this.boards));
   }
   private updateTaskStats() {
-    const pending = this.tareas.filter(tarea => !tarea.estado).length;
-    const completed = this.tareas.filter(tarea => tarea.estado).length;
-    this.taskStats.next({ pending, completed });
+    /*  const pending = this.tareas.filter(tarea => !tarea.estado).length;
+     const completed = this.tareas.filter(tarea => tarea.estado).length;
+     this.taskStats.next({ pending, completed }); */
   }
   private changeTask() {
     this.guardarTareas();
@@ -42,38 +43,39 @@ export class TodoListService {
 
   addTask(texto: string, board: number) {
     if (texto) {
-      this.boards[board].tareas.push({ texto, estado: false });
+      this.boards[this.currentList][board].tareas.push({ texto, estado: false });
       this.changeTask();
     }
   }
 
   addBoard(texto: string) {
     if (texto) {
-      this.boards.push({ texto, tareas: [] });
+      this.boards[this.currentList] ??= [];
+      this.boards[this.currentList].push({ texto, tareas: [] });
       this.changeTask();
     }
   }
 
   editTask(index: number, texto: string, board: number) {
     if (texto) {
-      this.boards[board].tareas[index].texto = texto;
+      this.boards[this.currentList][board].tareas[index].texto = texto;
       this.changeTask();
     }
   }
 
   removeTask(index: number, board: number) {
-    this.boards[board].tareas.splice(index, 1);
+    this.boards[this.currentList][board].tareas.splice(index, 1);
     this.changeTask();
   }
 
   toggleTask(index: number, board: number) {
-    this.boards[board].tareas[index].estado = !this.boards[board].tareas[index].estado;
+    this.boards[this.currentList][board].tareas[index].estado = !this.boards[this.currentList][board].tareas[index].estado;
     this.changeTask();
   }
 
   getTaskText(index: number, board: number) {
     console.log(this.boards, index, board)
-    return this.boards[board].tareas[index].texto;
+    return this.boards[this.currentList][board].tareas[index].texto;
   }
 
 }

@@ -1,11 +1,8 @@
-<div>
-  <input mdbCheckbox class="form-check-input" type="checkbox" [checked]="tarea.estado" (checkboxChange)="toggleTarea($event)" />
-  <label>
-    <span class="name" [style.text-decoration]="tarea.estado ? 'line-through' : 'none'">{{tarea.texto}}</span>
-    <span  class="buttons">
-      <a (click)="editTarea()" role="button" class="mr-2"><i class="fa fa-edit"></i></a>
-      <a (click)="deleteTarea()" role="button"><i class="fa fa-trash text-danger"></i></a>
-    </span>
-  </label>
-</div>
+<label>
+  <span class="name" [style.text-decoration]="tarea.estado ? 'line-through' : 'none'">{{tarea.texto}}</span>
+  <span class="buttons">
+    <a (click)="editTarea()" role="button" class="mr-2"><i class="fa fa-edit"></i></a>
+    <a (click)="deleteTarea()" role="button"><i class="fa fa-trash text-danger"></i></a>
+  </span>
+</label>
 <hr *ngIf="!last">

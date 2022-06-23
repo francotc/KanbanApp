@@ -1,9 +1,11 @@
 <div class="db-container-2 mt-5">
-  <div cdkDropList cdkDropListOrientation="horizontal" class="boards" (cdkDropListDropped)="drop($event)">
-    <ng-container cdkDrag *ngFor="let board of todoListService.boards; index as i">
+  <!-- <div cdkDropList cdkDropListOrientation="horizontal" class="boards" (cdkDropListDropped)="drop($event)"> -->
+  <div class="boards">
+    <ng-container cdkDropListGroup
+      *ngFor="let board of todoListService.boards[todoListService.currentList]; index as i">
       <app-todo-list [indexBoard]="i" [board]="board">
       </app-todo-list>
-      <mat-icon cdkDragHandle class="handle">drag_indicator</mat-icon>
+      <!-- <mat-icon cdkDragHandle class="handle">drag_indicator</mat-icon> -->
     </ng-container>
 
 
